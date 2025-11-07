@@ -72,12 +72,14 @@ $HELM repo update
 $HELM -n openebs install openebs openebs/openebs \
     --version ${OPENEBS_VERSION} \
     --set cstor.enabled=true \
-    --set jiva.enabled=true \
+    --set jiva.enabled=false \
+    --set lvm-localpv.enabled=true \
     --set jiva.defaultPolicy.replicas=${JIVA_REPLICAS} \
     --set legacy.enabled=false \
     --set cstor.cleanup.image.tag="latest" \
     --set cstor.csiNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
     --set jiva.csiNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
+    --set lvmNode.csiNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
     --set localprovisioner.basePath="$SNAP_COMMON/var/openebs/local" \
     --set ndm.sparse.path="$SNAP_COMMON/var/openebs/sparse" \
     --set varDirectoryPath.baseDir="$SNAP_COMMON/var/openebs"
