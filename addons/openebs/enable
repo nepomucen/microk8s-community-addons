@@ -83,7 +83,8 @@ $HELM -n openebs install openebs openebs/openebs \
     --set lvmNode.csiNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
     --set localprovisioner.basePath="$SNAP_COMMON/var/openebs/local" \
     --set ndm.sparse.path="$SNAP_COMMON/var/openebs/sparse" \
-    --set varDirectoryPath.baseDir="$SNAP_COMMON/var/openebs"
+    --set varDirectoryPath.baseDir="$SNAP_COMMON/var/openebs" \
+    --set openebs-crds.csi.volumeSnapshots.enabled=false
 
 echo "OpenEBS is installed"
 
