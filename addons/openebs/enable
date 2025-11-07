@@ -8,7 +8,7 @@ KUBECTL="$SNAP/microk8s-kubectl.wrapper"
 HELM="$SNAP/microk8s-helm3.wrapper"
 
 OPENEBS_NS="openebs"
-OPENEBS_VERSION="3.3.x"
+OPENEBS_VERSION="4.3.x"
 # Force to default to 3, able to override value with -j int flag
 JIVA_REPLICAS=3
 
@@ -74,6 +74,7 @@ $HELM -n openebs install openebs openebs/openebs \
     --set cstor.enabled=true \
     --set jiva.enabled=false \
     --set lvm-localpv.enabled=true \
+    --set lvm-localpv.volumeSnapshots.csi.enabled=true \
     --set jiva.defaultPolicy.replicas=${JIVA_REPLICAS} \
     --set legacy.enabled=false \
     --set cstor.cleanup.image.tag="latest" \
