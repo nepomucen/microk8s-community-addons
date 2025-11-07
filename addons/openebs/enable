@@ -74,7 +74,7 @@ $HELM -n openebs install openebs openebs/openebs \
     --set cstor.enabled=true \
     --set jiva.enabled=false \
     --set lvm-localpv.enabled=true \
-    --set lvm-localpv.volumeSnapshots.csi.enabled=true \
+    --set lvm-localpv.volumeSnapshots.csi.enabled=false \
     --set jiva.defaultPolicy.replicas=${JIVA_REPLICAS} \
     --set legacy.enabled=false \
     --set cstor.cleanup.image.tag="latest" \
