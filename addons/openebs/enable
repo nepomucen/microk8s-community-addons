@@ -71,20 +71,13 @@ $HELM repo add openebs https://openebs.github.io/openebs
 $HELM repo update
 $HELM -n openebs install openebs openebs/openebs \
     --version ${OPENEBS_VERSION} \
-    --set cstor.enabled=true \
-    --set jiva.enabled=false \
-    --set lvm-localpv.enabled=true \
-    --set lvm-localpv.volumeSnapshots.csi.enabled=false \
-    --set jiva.defaultPolicy.replicas=${JIVA_REPLICAS} \
-    --set legacy.enabled=false \
-    --set cstor.cleanup.image.tag="latest" \
-    --set cstor.csiNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
-    --set jiva.csiNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
-    --set lvmNode.csiNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
-    --set localprovisioner.basePath="$SNAP_COMMON/var/openebs/local" \
-    --set ndm.sparse.path="$SNAP_COMMON/var/openebs/sparse" \
-    --set varDirectoryPath.baseDir="$SNAP_COMMON/var/openebs" \
-    --set openebs-crds.csi.volumeSnapshots.enabled=false
+    --set engines.local.lvm.enabled=true \
+    --set engines.local.zfs.enabled=false \
+    --set engines.replicated.mayastor.enabled=false \
+    --set loki.enabled=false \
+    --set lvmNode.kubeletDir="$SNAP_COMMON/var/lib/kubelet/" \
+    --set hostpathClass.basePath="$SNAP_COMMON/var/openebs/local" \
+    --set localpv-provisioner.analytics.enabled=false
 
 echo "OpenEBS is installed"
 
